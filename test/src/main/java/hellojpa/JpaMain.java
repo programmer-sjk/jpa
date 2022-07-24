@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -12,12 +13,9 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Member findMember = entityManager.find(Member.class, 1L);
-        findMember.setName("Hello JPA");
-//        System.out.println("findMember id = " + findMember.getId());
-//        System.out.println("findMember name = " + findMember.getName());
+        Member member1 = entityManager.find(Member.class, 150L);
+        member1.setName("꾸기");
 
-//        entityManager.persist(member);
         tx.commit();
 
         entityManager.close();
