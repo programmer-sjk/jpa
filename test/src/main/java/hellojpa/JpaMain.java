@@ -12,11 +12,12 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Member member = new Member();
-        member.setId(1L);
-        member.setName("꾹이..");
+        Member findMember = entityManager.find(Member.class, 1L);
+        findMember.setName("Hello JPA");
+//        System.out.println("findMember id = " + findMember.getId());
+//        System.out.println("findMember name = " + findMember.getName());
 
-        entityManager.persist(member);
+//        entityManager.persist(member);
         tx.commit();
 
         entityManager.close();
