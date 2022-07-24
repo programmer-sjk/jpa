@@ -13,9 +13,11 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Member member1 = entityManager.find(Member.class, 150L);
-        member1.setName("꾸기");
 
+        Member member = new Member(200L, "인생의 나락");
+        entityManager.persist(member);
+        entityManager.flush();
+        System.out.println("=========================");
         tx.commit();
 
         entityManager.close();
