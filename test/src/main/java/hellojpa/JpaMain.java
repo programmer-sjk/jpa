@@ -14,9 +14,10 @@ public class JpaMain {
         tx.begin();
 
 
-        Member member = new Member(200L, "인생의 나락");
-        entityManager.persist(member);
-        entityManager.flush();
+        Member member = entityManager.find(Member.class, 150L);
+        member.setName("AAAAA");
+        entityManager.detach(member);
+
         System.out.println("=========================");
         tx.commit();
 
