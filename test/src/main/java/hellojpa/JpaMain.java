@@ -13,14 +13,13 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
+        Member member = new Member();
+        member.setId(1L);
+        member.setUsername("A");
+        member.setRoleType(RoleType.USER);
+        entityManager.persist(member);
 
-        Member member = entityManager.find(Member.class, 150L);
-        member.setName("AAAAA");
-        entityManager.detach(member);
-
-        System.out.println("=========================");
         tx.commit();
-
         entityManager.close();
         emf.close();
     }
