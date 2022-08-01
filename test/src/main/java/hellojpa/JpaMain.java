@@ -13,10 +13,6 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Member member = new Member();
-        member.setUsername("BBB");
-        entityManager.persist(member);
-
         tx.commit();
         entityManager.close();
         emf.close();
