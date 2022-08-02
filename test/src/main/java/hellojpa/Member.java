@@ -31,13 +31,4 @@ public class Member {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void changeTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
 }
