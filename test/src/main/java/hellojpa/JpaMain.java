@@ -13,23 +13,12 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Team team = new Team();
-        team.setName("teamA");
-        entityManager.persist(team);
-//
-//        Member member = new Member();
-//        member.setUsername("member1");
-//        member.changeTeam(team);
-//        entityManager.persist(member);
-//
-//        Team findTeam = entityManager.find(Team.class, team.getId());
-//        List<Member> members = findTeam.getMembers();
-//
-//        System.out.println("=========");
-//        for(Member m : members) {
-//            System.out.println("m = " + m.getUsername());
-//        }
-//        System.out.println("=========");
+        Movie movie = new Movie();
+        movie.setDirector("aaa");
+        movie.setActor("bbb");
+        movie.setName("바람과 함께 사라지다");
+        movie.setPrice(10000);
+        entityManager.persist(movie);
 
         tx.commit();
         entityManager.close();
