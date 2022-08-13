@@ -10,7 +10,7 @@ public class Delivery {
     @Id @GeneratedValue
     private Long id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "delivery")
     private Order order;
 
     private String city;
