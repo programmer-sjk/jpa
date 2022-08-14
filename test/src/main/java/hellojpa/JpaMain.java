@@ -20,6 +20,13 @@ public class JpaMain {
         parent.addChild(child2);
 
         entityManager.persist(parent);
+        entityManager.flush();
+        entityManager.clear();
+
+        Parent findParent = entityManager.find(Parent.class, parent.getId());
+        findParent.getChildList().remove(0);
+
+
 
         tx.commit();
         entityManager.close();
