@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 public class Member {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
     @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(name = "USERNAME")
     private String username;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
@@ -35,5 +35,9 @@ public class Member {
 
     public Team getTeam() {
         return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
