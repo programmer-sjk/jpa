@@ -13,32 +13,13 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Team team = new Team();
-        team.setName("teamA");
-        entityManager.persist(team);
+        Child child1 = new Child();
+        Child child2 = new Child();
+        Parent parent = new Parent();
+        parent.addChild(child1);
+        parent.addChild(child2);
 
-        Team team2 = new Team();
-        team.setName("teamB");
-        entityManager.persist(team2);
-
-        Member member = new Member();
-        member.setUsername("hello");
-        member.setTeam(team);
-        entityManager.persist(member);
-
-        Member member2 = new Member();
-        member2.setUsername("hello");
-        member2.setTeam(team2);
-        entityManager.persist(member2);
-
-
-        entityManager.flush();
-        entityManager.clear();
-
-//        Member findMember = entityManager.find(Member.class, member.getId());
-        List<Member> members = entityManager.createQuery("select m from Member m", Member.class).getResultList();
-//        System.out.println("m = " + findMember.getTeam().getClass());
-
+        entityManager.persist(parent);
 
         tx.commit();
         entityManager.close();
