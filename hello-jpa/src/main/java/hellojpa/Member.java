@@ -1,6 +1,7 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,11 @@ public class Member {
     @Column(name = "USERNAME")
     private String username;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    @Embedded
+    private Period period;
+
+    @Embedded
+    private Address address;
 
     public Long getId() {
         return id;
@@ -33,11 +36,19 @@ public class Member {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
+    public Period getPeriod() {
+        return period;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

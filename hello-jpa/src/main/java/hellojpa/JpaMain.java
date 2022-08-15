@@ -13,20 +13,12 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
-        Child child1 = new Child();
-        Child child2 = new Child();
-        Parent parent = new Parent();
-        parent.addChild(child1);
-        parent.addChild(child2);
+        Member member = new Member();
+        member.setUsername("hello");
+        member.setAddress(new Address("city", "street", "zipcode"));
+        member.setPeriod(new Period());
 
-        entityManager.persist(parent);
-        entityManager.flush();
-        entityManager.clear();
-
-        Parent findParent = entityManager.find(Parent.class, parent.getId());
-        findParent.getChildList().remove(0);
-
-
+        entityManager.persist(member);
 
         tx.commit();
         entityManager.close();
