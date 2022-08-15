@@ -13,12 +13,18 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
 
+        Address address = new Address("city", "street", "zipcode");
         Member member = new Member();
-        member.setUsername("hello");
-        member.setAddress(new Address("city", "street", "zipcode"));
-        member.setPeriod(new Period());
-
+        member.setUsername("member1");
+        member.setAddress(address);
         entityManager.persist(member);
+
+        Address address2 = new Address("city2", "street", "zipcode");
+        Member member2 = new Member();
+        member.setUsername("member2");
+        member.setAddress(address2);
+        entityManager.persist(member2);
+
 
         tx.commit();
         entityManager.close();
