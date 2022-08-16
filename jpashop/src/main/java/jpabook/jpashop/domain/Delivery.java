@@ -9,9 +9,16 @@ public class Delivery {
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
-
-    private String city;
-    private String street;
-    private String zipCode;
     private DeliveryStatus status;
+
+    @Embedded
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
