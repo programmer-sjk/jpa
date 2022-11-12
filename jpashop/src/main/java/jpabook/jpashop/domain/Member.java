@@ -5,39 +5,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member extends BaseEntity {
-    @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
-    private Long id;
-    private String name;
+@Table(name="MEMBER")
+public class Member {
+    @Id
+    @Column(name = "ID")
+    private String id;
+    @Column(name = "NAME")
+    private String username;
+    @Column(nullable = false)
+    private int age;
 
-    @Embedded
-    private Address address;
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
