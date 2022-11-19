@@ -16,13 +16,6 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Member member = new Member();
-            member.setId("asdad");
-            member.setUsername("서정국");
-            em.persist(member);
-//            Board board = new Board();
-//            em.persist(board);
-//            System.out.println(board.getId());
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
