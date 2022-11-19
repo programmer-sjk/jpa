@@ -6,12 +6,14 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="MEMBER")
+@Table(name="MEMBER", uniqueConstraints = {
+        @UniqueConstraint(name = "NAME_AGE_UNIQUE", columnNames = {"NAME", "AGE"})
+})
 public class Member {
     @Id
     @Column(name = "ID")
     private String id;
-    @Column(name = "NAME")
+    @Column(name = "name", nullable = false, length = 10)
     private String username;
     @Column(nullable = false)
     private int age;
