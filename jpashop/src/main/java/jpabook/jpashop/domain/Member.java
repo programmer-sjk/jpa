@@ -2,6 +2,7 @@ package jpabook.jpashop.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,15 @@ public class Member {
     private String username;
     @Column(nullable = false)
     private int age;
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedData;
+
+    @Lob
+    private String description;
 
     public String getId() {
         return id;
