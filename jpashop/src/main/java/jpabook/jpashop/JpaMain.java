@@ -1,7 +1,7 @@
 package jpabook.jpashop;
 
-import jpabook.jpashop.domain.Board;
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,6 +16,11 @@ public class JpaMain {
 
         try {
             tx.begin();
+            Member member = new Member();
+            member.setId("1");
+            member.setUsername("aa");
+            member.setAge(10);
+            em.persist(member);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
