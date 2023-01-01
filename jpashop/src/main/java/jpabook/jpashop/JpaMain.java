@@ -20,8 +20,9 @@ public class JpaMain {
             tx.begin();
             testSave(em);
             query(em);
-            update(em);
-            delete(em);
+//            update(em);
+//            delete(em);
+            biDirection(em);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
@@ -68,5 +69,14 @@ public class JpaMain {
     private static void delete(EntityManager em) {
         Member member = em.find(Member.class, "member1");
         member.setTeam(null);
+    }
+
+    private static void biDirection(EntityManager em) {
+        Team team = em.find(Team.class, "team1");
+        List<Member> members = team.getMembers();
+
+        for (Member member : members) {
+            System.out.println(member.getUsername());
+        }
     }
 }
