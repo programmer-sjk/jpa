@@ -2,6 +2,7 @@ package jpabook.jpashop;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,11 +17,7 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Member member = new Member();
-            member.setId("1");
-            member.setUsername("aa");
-            member.setAge(10);
-            em.persist(member);
+            testSave(em);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
@@ -30,5 +27,18 @@ public class JpaMain {
         }
 
         emf.close();
+    }
+
+    public static void testSave(EntityManager em) {
+        Team team1 = new Team("team1", "팀1");
+        em.persist(team1);
+
+        Member member1 = new Member("member1", "회원1", 33);
+        member1.setTeam(team1);
+        em.persist(member1);
+
+        Member member2 = new Member("member2", "회원2", 33);
+        member2.setTeam(team1);
+        em.persist(member2);
     }
 }

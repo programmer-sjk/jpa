@@ -27,6 +27,18 @@ public class Member {
     @Lob
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name="TEAM_ID")
+    private Team team;
+
+    public Member(String id, String name, int age) {
+        this.id = id;
+        this.username = name;
+        this.age = age;
+    }
+
+    public Member() {}
+
     public String getId() {
         return id;
     }
@@ -49,5 +61,9 @@ public class Member {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
