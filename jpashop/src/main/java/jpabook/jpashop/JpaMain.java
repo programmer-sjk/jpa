@@ -21,6 +21,7 @@ public class JpaMain {
             testSave(em);
             query(em);
             update(em);
+            delete(em);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
@@ -62,5 +63,10 @@ public class JpaMain {
 
         Member member = em.find(Member.class, "member1");
         member.setTeam(team2);
+    }
+
+    private static void delete(EntityManager em) {
+        Member member = em.find(Member.class, "member1");
+        member.setTeam(null);
     }
 }
