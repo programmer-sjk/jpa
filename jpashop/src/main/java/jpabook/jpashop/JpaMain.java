@@ -20,6 +20,7 @@ public class JpaMain {
             tx.begin();
             testSave(em);
             query(em);
+            update(em);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
@@ -31,7 +32,7 @@ public class JpaMain {
         emf.close();
     }
 
-    public static void testSave(EntityManager em) {
+    private static void testSave(EntityManager em) {
         Team team1 = new Team("team1", "팀1");
         em.persist(team1);
 
@@ -53,5 +54,13 @@ public class JpaMain {
         for (Member member : results) {
             System.out.println(member.getUsername());
         }
+    }
+
+    private static void update(EntityManager em) {
+        Team team2 = new Team("team2", "팀2");
+        em.persist(team2);
+
+        Member member = em.find(Member.class, "member1");
+        member.setTeam(team2);
     }
 }
