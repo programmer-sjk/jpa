@@ -12,7 +12,7 @@ import java.util.List;
 public class Member {
     @Id
     @Column(name = "ID")
-    private String id;
+    private Long id;
     @Column(name = "name", nullable = false, length = 10)
     private String username;
     @Column(nullable = false)
@@ -31,7 +31,7 @@ public class Member {
     @JoinColumn(name="TEAM_ID")
     private Team team;
 
-    public Member(String id, String name, int age) {
+    public Member(Long id, String name, int age) {
         this.id = id;
         this.username = name;
         this.age = age;
@@ -39,11 +39,11 @@ public class Member {
 
     public Member() {}
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,11 +64,9 @@ public class Member {
     }
 
     public void setTeam(Team team) {
-        if (this.team != null) {
-            this.team.getMembers().remove(this);
-        }
-        
         this.team = team;
-        team.getMembers().add(this);
+        if (!team.getMembers().contains(this)) {
+            team.getMembers().add(this);
+        }
     }
 }

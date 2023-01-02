@@ -18,11 +18,11 @@ public class JpaMain {
 
         try {
             tx.begin();
-            testSave(em);
-            query(em);
+//            testSave(em);
+//            query(em);
 //            update(em);
 //            delete(em);
-            biDirection(em);
+//            biDirection(em);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
@@ -38,11 +38,11 @@ public class JpaMain {
         Team team1 = new Team("team1", "팀1");
         em.persist(team1);
 
-        Member member1 = new Member("member1", "회원1", 33);
+        Member member1 = new Member(1L, "회원1", 33);
         member1.setTeam(team1);
         em.persist(member1);
 
-        Member member2 = new Member("member2", "회원2", 33);
+        Member member2 = new Member(2L, "회원2", 33);
         member2.setTeam(team1);
         em.persist(member2);
     }
@@ -62,12 +62,12 @@ public class JpaMain {
         Team team2 = new Team("team2", "팀2");
         em.persist(team2);
 
-        Member member = em.find(Member.class, "member1");
+        Member member = em.find(Member.class, 1L);
         member.setTeam(team2);
     }
 
     private static void delete(EntityManager em) {
-        Member member = em.find(Member.class, "member1");
+        Member member = em.find(Member.class, 1L);
         member.setTeam(null);
     }
 
