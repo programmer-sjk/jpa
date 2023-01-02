@@ -31,6 +31,10 @@ public class Member {
     @JoinColumn(name="TEAM_ID")
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
     public Member(Long id, String name, int age) {
         this.id = id;
         this.username = name;
