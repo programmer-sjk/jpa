@@ -82,4 +82,9 @@ public class Member {
     public List<Product> getProducts() {
         return products;
     }
+
+    public void addProduct(Product product) {
+        products.add(product);
+        product.getMembers().add(this);
+    }
 }
