@@ -26,10 +26,10 @@ public class JpaMain {
             member.setUsername("member");
             em.persist(member);
 
-            MemberProduct memberProduct = new MemberProduct();
-            memberProduct.setMember(member);
-            memberProduct.setProduct(product);
-            em.persist(memberProduct);
+            Order order = new Order();
+            order.setMember(member);
+            order.setProduct(product);
+            em.persist(order);
 
             tx.commit();
         } catch (Exception e) {
