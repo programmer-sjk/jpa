@@ -1,9 +1,6 @@
 package jpabook.jpashop;
 
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.Product;
-import jpabook.jpashop.domain.Team;
+import jpabook.jpashop.domain.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -27,8 +24,12 @@ public class JpaMain {
             Member member = new Member();
             member.setId(1L);
             member.setUsername("member");
-            member.getProducts().add(product);
             em.persist(member);
+
+            MemberProduct memberProduct = new MemberProduct();
+            memberProduct.setMember(member);
+            memberProduct.setProduct(product);
+            em.persist(memberProduct);
 
             tx.commit();
         } catch (Exception e) {

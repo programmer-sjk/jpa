@@ -3,8 +3,6 @@ package jpabook.jpashop.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.List;
 
 @Entity
 public class Product {
@@ -12,9 +10,6 @@ public class Product {
     private String id;
 
     private String name;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Member> members;
 
     public String getId() {
         return id;
@@ -30,9 +25,5 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Member> getMembers() {
-        return members;
     }
 }
