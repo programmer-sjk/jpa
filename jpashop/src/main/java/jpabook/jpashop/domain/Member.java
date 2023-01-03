@@ -35,6 +35,11 @@ public class Member {
     @JoinColumn(name = "LOCKER_ID")
     private Locker locker;
 
+    @ManyToMany
+    @JoinTable(name = "MEMBER_PRODUCT", joinColumns = @JoinColumn(name = "MEMBER_ID"),
+        inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID"))
+    private List<Product> products = new ArrayList<>();
+
     public Member(Long id, String name, int age) {
         this.id = id;
         this.username = name;
@@ -72,5 +77,9 @@ public class Member {
         if (!team.getMembers().contains(this)) {
             team.getMembers().add(this);
         }
+    }
+
+    public List<Product> getProducts() {
+        return products;
     }
 }
