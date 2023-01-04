@@ -17,15 +17,14 @@ public class JpaMain {
         try {
             tx.begin();
             Parent parent = new Parent();
-            parent.setId1("id1");
-            parent.setId2("id2");
+            parent.setId(new ParentId("id1", "id2"));
             em.persist(parent);
             tx.commit();
 
             tx.begin();
             ParentId ids = new ParentId("id1", "id2");
             Parent p = em.find(Parent.class, ids);
-            System.out.println(p.getId1());
+            System.out.println(p.getId());
             tx.commit();
 
         } catch (Exception e) {
