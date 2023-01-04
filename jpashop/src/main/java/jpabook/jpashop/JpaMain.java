@@ -16,7 +16,10 @@ public class JpaMain {
 
         try {
             tx.begin();
-
+            Parent parent = new Parent();
+            parent.setId1("id1");
+            parent.setId2("id2");
+            em.persist(parent);
             tx.commit();
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
