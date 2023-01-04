@@ -21,6 +21,13 @@ public class JpaMain {
             parent.setId2("id2");
             em.persist(parent);
             tx.commit();
+
+            tx.begin();
+            ParentId ids = new ParentId("id1", "id2");
+            Parent p = em.find(Parent.class, ids);
+            System.out.println(p.getId1());
+            tx.commit();
+
         } catch (Exception e) {
             System.out.println("message: " + e.getMessage());
             tx.rollback();
