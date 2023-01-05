@@ -5,11 +5,9 @@ import java.util.Date;
 
 @Entity
 public class Board {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @Id @GeneratedValue
+    private Long id;
 
-    public String getId() {
-        return id;
-    }
+    @OneToOne(mappedBy = "board")
+    private BoardDetail boardDetail;
 }
