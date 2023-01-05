@@ -9,8 +9,4 @@ public class Child {
     private Long id;
 
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "PARENT_ID")
-    private Parent parent;
 }
