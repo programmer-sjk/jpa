@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Parent {
@@ -10,11 +12,6 @@ public class Parent {
 
     private String name;
 
-    @OneToOne
-    @JoinTable(
-            name = "PARENT_CHILD",
-            joinColumns = @JoinColumn(name = "PARENT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CHILD_ID")
-    )
-    private Child child;
+    @OneToMany(mappedBy = "parent")
+    private List<Child> childs = new ArrayList<>();
 }
