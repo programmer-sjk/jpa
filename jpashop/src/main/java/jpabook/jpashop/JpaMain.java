@@ -31,8 +31,12 @@ public class JpaMain {
 
             tx.begin();
             em.clear();
-            Member find = em.getReference(Member.class, "m1");
-            System.out.println(find.getName());
+            Member find = em.find(Member.class, "m1");
+            System.out.println("step1");
+            Team team1 = find.getTeam();
+            System.out.println("step2");
+            team1.getName();
+            System.out.println("step3");
             tx.commit();
 
         } catch (Exception e) {
