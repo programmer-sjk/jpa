@@ -11,10 +11,9 @@ public class Child {
     private String name;
 
     @ManyToOne(optional = false)
-    @JoinTable(
-            name = "PARENT_CHILD",
-            joinColumns = @JoinColumn(name = "CHILD_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PARENT_ID")
-    )
     private Parent parent;
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
 }

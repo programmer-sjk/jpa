@@ -14,4 +14,8 @@ public class Parent {
 
     @OneToMany(mappedBy = "parent")
     private List<Child> childs = new ArrayList<>();
+
+    public List<Child> getChilds() {
+        return childs;
+    }
 }
