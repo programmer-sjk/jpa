@@ -7,8 +7,15 @@ import java.util.List;
 @Entity
 public class Team {
     @Id
-    @Column(name = "TEAM_ID")
     private String id;
 
     private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

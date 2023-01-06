@@ -16,10 +16,23 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Member member = em.getReference(Member.class, "id1");
-            boolean isLoad = em.getEntityManagerFactory().getPersistenceUnitUtil().isLoaded(member);
-            System.out.println("isLoad: " + isLoad);
-            System.out.println(member.getClass().getName());
+            Team team = new Team();
+            team.setId("t1");
+            team.setName("t1");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setId("m1");
+            member.setName("m1");
+            member.setTeam(team);
+            em.persist(member);
+            tx.commit();
+
+
+            tx.begin();
+            em.clear();
+            Member find = em.getReference(Member.class, "m1");
+            System.out.println(find.getName());
             tx.commit();
 
         } catch (Exception e) {
