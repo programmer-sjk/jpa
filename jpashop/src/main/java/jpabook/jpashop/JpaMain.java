@@ -17,9 +17,9 @@ public class JpaMain {
         try {
             tx.begin();
             Member member = em.getReference(Member.class, "id1");
-            System.out.println("step1");
-            member.getName();
-
+            boolean isLoad = em.getEntityManagerFactory().getPersistenceUnitUtil().isLoaded(member);
+            System.out.println("isLoad: " + isLoad);
+            System.out.println(member.getClass().getName());
             tx.commit();
 
         } catch (Exception e) {
