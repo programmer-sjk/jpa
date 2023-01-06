@@ -16,19 +16,15 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Parent parent = new Parent();
-            em.persist(parent);
-
             Child child1 = new Child();
-            child1.setParent(parent);
-            parent.getChilds().add(child1);
-            em.persist(child1);
-
             Child child2 = new Child();
-            child2.setParent(parent);
-            parent.getChilds().add(child2);
-            em.persist(child2);
 
+            Parent parent = new Parent();
+            child1.setParent(parent);
+            child2.setParent(parent);
+            parent.getChilds().add(child1);
+            parent.getChilds().add(child2);
+            em.persist(parent);
             tx.commit();
 
         } catch (Exception e) {
