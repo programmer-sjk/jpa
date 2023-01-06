@@ -6,6 +6,19 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Member extends BaseEntity {
-    private String email;
+public class Member {
+    @Id @GeneratedValue
+    private String id;
+    private String name;
+
+    @ManyToOne
+    private Team team;
+
+    public String getName() {
+        return name;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
 }

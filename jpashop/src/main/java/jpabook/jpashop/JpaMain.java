@@ -16,12 +16,9 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Board board = new Board();
-            em.persist(board);
-
-            BoardDetail detail = new BoardDetail();
-            detail.setBoard(board);
-            em.persist(detail);
+            Member member = em.getReference(Member.class, "id1");
+            System.out.println("step1");
+            member.getName();
 
             tx.commit();
 
