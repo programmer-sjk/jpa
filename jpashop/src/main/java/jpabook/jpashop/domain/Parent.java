@@ -12,7 +12,7 @@ public class Parent {
 
     private String name;
 
-    @OneToMany(mappedBy = "parent",cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, cascade = CascadeType.PERSIST)
     private List<Child> childs = new ArrayList<>();
 
     public List<Child> getChilds() {
