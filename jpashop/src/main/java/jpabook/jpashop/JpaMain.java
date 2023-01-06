@@ -29,12 +29,7 @@ public class JpaMain {
 
             tx.begin();
             Parent findParent = em.find(Parent.class, 1L);
-            Child findChild1 = em.find(Child.class, 1L);
-            Child findChild2 = em.find(Child.class, 2L);
-
             em.remove(findParent);
-            em.remove(findChild1);
-            em.remove(findChild2);
             tx.commit();
 
         } catch (Exception e) {
