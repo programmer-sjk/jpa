@@ -11,6 +11,9 @@ public class Member {
     private String id;
     private String name;
 
+    @Embedded Period workPeriod;
+    @Embedded Address homeAddress;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
