@@ -13,6 +13,12 @@ public class Member {
 
     @Embedded Period workPeriod;
     @Embedded Address homeAddress;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city", column = @Column(name="COMPANY_CITY")),
+            @AttributeOverride(name="street", column = @Column(name="COMPANY_STREET")),
+    })
+    Address companyAddress;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
