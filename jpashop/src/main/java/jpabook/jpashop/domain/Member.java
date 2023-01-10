@@ -11,36 +11,7 @@ public class Member {
     private String id;
     private String name;
 
-    @Embedded Period workPeriod;
-    @Embedded Address homeAddress;
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name="city", column = @Column(name="COMPANY_CITY")),
-            @AttributeOverride(name="street", column = @Column(name="COMPANY_STREET")),
-    })
-    Address companyAddress;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
-
-    public String getName() {
-        return name;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "MEMBER_ID")
+    private List<Address> addressHistory = new ArrayList<>();
 }
