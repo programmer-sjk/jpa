@@ -16,7 +16,6 @@ public class JpaMain {
 
         try {
             tx.begin();
-
             tx.commit();
 
         } catch (Exception e) {
