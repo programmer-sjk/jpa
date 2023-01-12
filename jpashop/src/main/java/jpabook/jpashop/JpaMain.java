@@ -16,11 +16,13 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Team team = new Team();
-            System.out.println("before:" + team.getMembers().getClass());
-            team.setId("team1");
-            em.persist(team);
-            System.out.println("after:" + team.getMembers().getClass());
+            Member member = new Member("member1", "name", true);
+            em.persist(member);
+            tx.commit();
+
+            tx.begin();
+            Member findMember = em.find(Member.class, "member1");
+            System.out.println(findMember.isVip());
             tx.commit();
 
         } catch (Exception e) {
