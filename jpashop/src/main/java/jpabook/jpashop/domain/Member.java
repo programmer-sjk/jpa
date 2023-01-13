@@ -25,4 +25,14 @@ public class Member {
     public boolean isVip() {
         return vip;
     }
+
+    @PrePersist
+    public void prePersist() {
+        System.out.println("prepersist id=" + id);
+    }
+
+    @PostPersist
+    public void postPersist() {
+        System.out.println("postpersist id=" + id);
+    }
 }
