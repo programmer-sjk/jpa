@@ -16,13 +16,34 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Member member = new Member("member1", "name", true);
+            Member member = new Member();
             em.persist(member);
+
+            Member member2 = new Member();
+            em.persist(member2);
+
+            Member member3 = new Member();
+            em.persist(member3);
+
+
+            Order order = new Order();
+            order.setMember(member);
+            em.persist(order);
+
+            Order order2 = new Order();
+            order2.setMember(member2);
+            em.persist(order2);
+
+            Order order3 = new Order();
+            order3.setMember(member3);
+            em.persist(order3);
             tx.commit();
 
             tx.begin();
-            Member findMember = em.find(Member.class, "member1");
-            System.out.println(findMember.isVip());
+            em.clear();
+//            em.find(Member.class, 1L);
+            em.createQuery("select m from Member m", Member.class)
+                            .getResultList();
             tx.commit();
 
         } catch (Exception e) {

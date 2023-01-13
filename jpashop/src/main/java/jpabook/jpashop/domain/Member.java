@@ -7,32 +7,13 @@ import java.util.List;
 
 @Entity
 public class Member {
-    @Id
-    private String id;
-    private String name;
+    @Id @GeneratedValue
+    private Long id;
 
-    public Member(String id, String name, boolean vip) {
-        this.id = id;
-        this.name = name;
-        this.vip = vip;
-    }
+    @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+    private List<Order> orders = new ArrayList<>();
 
-    protected Member() {}
-
-    @Convert(converter = BooleanToYNConverter.class)
-    private boolean vip;
-
-    public boolean isVip() {
-        return vip;
-    }
-
-    @PrePersist
-    public void prePersist() {
-        System.out.println("prepersist id=" + id);
-    }
-
-    @PostPersist
-    public void postPersist() {
-        System.out.println("postpersist id=" + id);
+    public Long getId() {
+        return id;
     }
 }
