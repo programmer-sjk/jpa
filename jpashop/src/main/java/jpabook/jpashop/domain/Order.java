@@ -15,4 +15,8 @@ public class Order {
     public void setMember(Member member) {
         this.member = member;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

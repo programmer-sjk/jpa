@@ -16,8 +16,8 @@ public class JpaMain {
 
         try {
             tx.begin();
-            Member member = new Member();
-            em.persist(member);
+            Member member1 = new Member();
+            em.persist(member1);
 
             Member member2 = new Member();
             em.persist(member2);
@@ -27,7 +27,7 @@ public class JpaMain {
 
 
             Order order = new Order();
-            order.setMember(member);
+            order.setMember(member1);
             em.persist(order);
 
             Order order2 = new Order();
@@ -42,8 +42,11 @@ public class JpaMain {
             tx.begin();
             em.clear();
 //            em.find(Member.class, 1L);
-            em.createQuery("select m from Member m", Member.class)
+            List<Member> members = em.createQuery("select m from Member m", Member.class)
                             .getResultList();
+            for (Member member : members) {
+                System.out.println(member.getOrders().size());
+            }
             tx.commit();
 
         } catch (Exception e) {
