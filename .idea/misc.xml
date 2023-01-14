@@ -3,9 +3,10 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/jpql/pom.xml" />
         <option value="$PROJECT_DIR$/jpashop/pom.xml" />
         <option value="$PROJECT_DIR$/hello-jpa/pom.xml" />
+        <option value="$PROJECT_DIR$/jpa-practice/pom.xml" />
+        <option value="$PROJECT_DIR$/jpa-example/pom.xml" />
       </list>
     </option>
   </component>

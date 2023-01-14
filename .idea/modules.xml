@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/hello-jpa/ex1-hello-jpa.iml" filepath="$PROJECT_DIR$/hello-jpa/ex1-hello-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jpa-example/ex1-hello-jpa.iml" filepath="$PROJECT_DIR$/jpa-example/ex1-hello-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jpa.iml" filepath="$PROJECT_DIR$/.idea/jpa.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jpashop/jpabook.iml" filepath="$PROJECT_DIR$/jpashop/jpabook.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jpql/jpql.iml" filepath="$PROJECT_DIR$/jpql/jpql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hello-jpa/jpa-example.iml" filepath="$PROJECT_DIR$/hello-jpa/jpa-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jpashop/jpa-practice.iml" filepath="$PROJECT_DIR$/jpashop/jpa-practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jpa-practice/jpabook.iml" filepath="$PROJECT_DIR$/jpa-practice/jpabook.iml" />
     </modules>
   </component>
 </project>
