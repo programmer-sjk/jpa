@@ -21,6 +21,7 @@ public class JpaMain {
 
         tx.begin();
         Member findMember = em.find(Member.class, 1L);
+        em.clear();
         findMember.setName("꾸기");
         tx.commit();
 
