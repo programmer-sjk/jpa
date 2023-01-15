@@ -28,7 +28,8 @@ public class JpaMain {
         em.persist(team2);
 
         Member findMember = em.find(Member.class, 2L);
-        findMember.setTeam(team2);
+        findMember.setTeam(null);
+        em.remove(team2);
         tx.commit();
 
         em.close();
