@@ -16,4 +16,8 @@ public class Team {
     }
 
     protected Team() {}
+
+    public String getName() {
+        return name;
+    }
 }

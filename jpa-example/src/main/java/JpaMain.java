@@ -23,6 +23,12 @@ public class JpaMain {
 
         tx.commit();
 
+        tx.begin();
+        Member findMember = em.find(Member.class, 2L);
+        Team findTeam = findMember.getTeam();
+        System.out.println(findTeam.getName());
+        tx.commit();
+
         em.close();
         emf.close();
     }
