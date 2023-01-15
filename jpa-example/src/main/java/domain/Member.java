@@ -4,9 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class Member {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     public void setId(Long id) {
         this.id = id;
     }
