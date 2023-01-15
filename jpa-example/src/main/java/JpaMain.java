@@ -14,13 +14,12 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        Team team = new Team("team");
-        em.persist(team);
-
         Member member = new Member();
         member.setName("member1");
-        member.setTeam(team);
+
+        Team team = new Team("team");
         team.addMember(member);
+        em.persist(team);
         em.persist(member);
 
         tx.commit();
