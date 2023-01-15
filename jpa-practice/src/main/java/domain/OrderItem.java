@@ -1,15 +1,17 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class OrderItem {
     @Id @GeneratedValue
     private Long id;
-    private Long orderId;
-    private Long itemId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
     private int orderPrice;
     private int count;
 }
