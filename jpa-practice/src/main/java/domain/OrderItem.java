@@ -5,11 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Member {
+public class OrderItem {
     @Id @GeneratedValue
     private Long id;
-    private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+    private Long orderId;
+    private Long itemId;
+    private int orderPrice;
+    private int count;
 }
