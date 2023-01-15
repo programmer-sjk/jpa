@@ -4,15 +4,18 @@ import javax.persistence.*;
 
 @Entity
 public class Member {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
     private String name;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }

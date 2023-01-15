@@ -1,4 +1,5 @@
 import domain.Member;
+import domain.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,9 +13,14 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
+        Team team = new Team("team");
+        em.persist(team);
+
         Member member = new Member();
+        member.setName("member1");
+        member.setTeam(team);
         em.persist(member);
-        System.out.println("before commit");
+
         tx.commit();
 
         em.close();
