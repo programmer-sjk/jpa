@@ -3,14 +3,14 @@ package domain;
 import javax.persistence.*;
 
 @Entity
-@IdClass(MemberProductId.class)
-public class MemberProduct {
-    @Id
+public class Orders {
+    @Id @GeneratedValue
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;

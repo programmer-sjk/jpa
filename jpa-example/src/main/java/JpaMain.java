@@ -1,13 +1,11 @@
 import domain.Member;
-import domain.MemberProduct;
+import domain.Orders;
 import domain.Product;
-import domain.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -24,11 +22,11 @@ public class JpaMain {
         product.setName("product1");
         em.persist(product);
 
-        MemberProduct memberProduct = new MemberProduct();
-        memberProduct.setMember(member);
-        memberProduct.setProduct(product);
-        memberProduct.setOrderAmount(2);
-        em.persist(memberProduct);
+        Orders order = new Orders();
+        order.setMember(member);
+        order.setProduct(product);
+        order.setOrderAmount(2);
+        em.persist(order);
 
         tx.commit();
 
