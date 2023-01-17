@@ -32,6 +32,8 @@ public class Team {
     }
 
     public void addMember(Member member) {
-        this.members.add(member);
+        if (!this.members.contains(member)) {
+            this.members.add(member);
+        }
     }
 }
