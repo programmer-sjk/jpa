@@ -4,10 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Member {
-    @Id @GeneratedValue
-    private Long id;
-    private String name;
+public class Member extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
