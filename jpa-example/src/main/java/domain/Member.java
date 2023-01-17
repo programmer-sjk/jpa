@@ -11,6 +11,13 @@ public class Member {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "locker_id")
+    private Locker locker;
+
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts;
+
     public void setName(String name) {
         this.name = name;
     }
