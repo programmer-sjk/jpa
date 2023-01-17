@@ -7,13 +7,8 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class Item {
+public class Category {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    private int price;
-    private int stockQuantity;
-
-    @OneToMany(mappedBy = "item")
-    private List<CategoryItem> categoryItems;
 }
