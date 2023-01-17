@@ -1,4 +1,6 @@
 import domain.Member;
+import domain.MemberProduct;
+import domain.Product;
 import domain.Team;
 
 import javax.persistence.EntityManager;
@@ -14,19 +16,20 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        Team team = new Team("team");
-        em.persist(team);
-
         Member member = new Member();
         member.setName("member1");
-        member.setTeam(team);
         em.persist(member);
 
-        tx.commit();
+        Product product = new Product();
+        product.setName("product1");
+        em.persist(product);
 
-        tx.begin();
-        List<Member> members = team.getMembers();
-        System.out.println(members.size());
+        MemberProduct memberProduct = new MemberProduct();
+        memberProduct.setMember(member);
+        memberProduct.setProduct(product);
+        memberProduct.setOrderAmount(2);
+        em.persist(memberProduct);
+
         tx.commit();
 
         em.close();
