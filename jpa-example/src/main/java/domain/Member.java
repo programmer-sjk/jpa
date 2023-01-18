@@ -8,7 +8,7 @@ public class Member{
     @Id
     private String id;
     private String name;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
     private Team team;
 

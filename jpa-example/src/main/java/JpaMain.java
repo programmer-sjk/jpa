@@ -15,16 +15,13 @@ public class JpaMain {
         member.setId("member1");
         member.setName("서정국");
         em.persist(member);
-        tx.commit();
 
-        tx.begin();
+        em.flush();
         em.clear();
-        Member findMember = em.getReference(Member.class, "member1");
+        Member findMember = em.find(Member.class, "member1");
         tx.commit();
 
         em.close();
-        findMember.getName();
-
         emf.close();
     }
 }
