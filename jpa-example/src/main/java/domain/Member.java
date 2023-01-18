@@ -4,17 +4,25 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Member extends BaseEntity{
+public class Member{
+    @Id
+    private String id;
+    private String name;
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToOne
-    @JoinColumn(name = "locker_id")
-    private Locker locker;
+    public String getId() {
+        return this.id;
+    }
 
-    @OneToMany(mappedBy = "member")
-    private List<Orders> memberProducts;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -22,7 +30,6 @@ public class Member extends BaseEntity{
 
     public void setTeam(Team team) {
         this.team = team;
-        team.addMember(this);
     }
 
     public Team getTeam() {
