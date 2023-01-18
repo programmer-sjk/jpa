@@ -1,7 +1,4 @@
-import domain.Member;
-import domain.Orders;
-import domain.Product;
-import domain.Team;
+import domain.*;
 
 import javax.persistence.*;
 
@@ -12,19 +9,21 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        Team team = new Team("team1");
-        em.persist(team);
+        Parent parent = new Parent();
 
-        Member member = new Member();
-        member.setId("member1");
-        member.setName("서정국");
-        member.setTeam(team);
-        em.persist(member);
+        Child child1 = new Child();
+        child1.setParent(parent);
 
-        em.flush();
-        em.clear();
-        Team findTeam = em.find(Team.class, 1L);
-        findTeam.getMembers().get(0);
+        Child child2 = new Child();
+        child2.setParent(parent);
+
+        parent.addChild(child1);
+        parent.addChild(child2);
+        em.persist(parent);
+        tx.commit();
+
+        tx.begin();
+        em.remove(parent);
         tx.commit();
 
         em.close();
