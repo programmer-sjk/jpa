@@ -23,9 +23,8 @@ public class JpaMain {
 
         em.flush();
         em.clear();
-        Member findMember = em.find(Member.class, "member1");
-        System.out.println("====");
-        System.out.println(em.getEntityManagerFactory().getPersistenceUnitUtil().isLoaded(findMember.getTeam()));
+        Team findTeam = em.find(Team.class, 1L);
+        findTeam.getMembers().get(0);
         tx.commit();
 
         em.close();
