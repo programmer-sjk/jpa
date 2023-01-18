@@ -23,7 +23,7 @@ public class JpaMain {
         tx.commit();
 
         tx.begin();
-        em.remove(parent);
+        parent.getChildren().remove(0);
         tx.commit();
 
         em.close();
