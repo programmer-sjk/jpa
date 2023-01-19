@@ -11,18 +11,19 @@ import java.util.List;
 public class Order {
     @Id @GeneratedValue
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
     @Enumerated(EnumType.STRING)
     private OrderStatus street;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 }
