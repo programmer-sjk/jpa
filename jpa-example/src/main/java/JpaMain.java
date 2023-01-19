@@ -1,6 +1,7 @@
 import domain.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -9,21 +10,16 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        Parent parent = new Parent();
+        Member member = new Member();
+        member.setId("member1");
+        member.setName("서정국");
+        em.persist(member);
+        em.flush();
+        em.clear();
 
-        Child child1 = new Child();
-        child1.setParent(parent);
-
-        Child child2 = new Child();
-        child2.setParent(parent);
-
-        parent.addChild(child1);
-        parent.addChild(child2);
-        em.persist(parent);
-        tx.commit();
-
-        tx.begin();
-        parent.getChildren().remove(0);
+        String jpql = "select m from Member m where m.name = '서정국'";
+        em.createQuery(jpql, Member.class).getResultList();
+        em.createQuery(jpql, Member.class).getResultList();
         tx.commit();
 
         em.close();
