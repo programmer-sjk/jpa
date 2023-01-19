@@ -45,4 +45,14 @@ public class Member{
     public void setVip(boolean vip) {
         this.vip = vip;
     }
+
+    @PrePersist
+    public void prePersist() {
+        System.out.println("prePersist");
+    }
+
+    @PostPersist
+    public void postPersist() {
+        System.out.println("postPersist");
+    }
 }
