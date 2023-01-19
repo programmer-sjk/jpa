@@ -13,13 +13,13 @@ public class JpaMain {
         Member member = new Member();
         member.setId("member1");
         member.setName("서정국");
+        member.setVip(true);
         em.persist(member);
         em.flush();
         em.clear();
 
-        String jpql = "select m from Member m where m.name = '서정국'";
-        em.createQuery(jpql, Member.class).getResultList();
-        em.createQuery(jpql, Member.class).getResultList();
+        Member findMember = em.find(Member.class, "member1");
+        System.out.println(findMember.isVip());
         tx.commit();
 
         em.close();
