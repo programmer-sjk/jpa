@@ -18,8 +18,11 @@ public class JpaMain {
         em.flush();
         em.clear();
 
+        Member refMember = em.getReference(Member.class, "member1");
         Member findMember = em.find(Member.class, "member1");
-        System.out.println(findMember.isVip());
+        System.out.println(refMember.getClass());
+        System.out.println(findMember.getClass());
+        System.out.println(refMember == findMember);
         tx.commit();
 
         em.close();
